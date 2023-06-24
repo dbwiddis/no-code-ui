@@ -4,6 +4,8 @@
  */
 package ui;
 
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 
@@ -13,17 +15,14 @@ import javax.swing.JMenuBar;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-
 import ui.config.Config;
+import ui.panel.CatPanel;
 import ui.panel.SplashPanel;
 import ui.panel.Tab2Panel;
-import ui.panel.TabPanel;
 import ui.panel.UiJPanel;
 
 /**
- * Basic Swing class to demonstrate potential UI. Not ready for production use and
- * intended as inspiration/examples.
+ * Basic Swing class to demonstrate potential UI. Not ready for production use and intended as inspiration/examples.
  */
 public class UI {
 
@@ -57,8 +56,8 @@ public class UI {
         jMenu = getJMenu("Splash Page", 'O', "Summary", new SplashPanel());
         menuBar.add(jMenu);
         // Add later menu items
-        menuBar.add(getJMenu("Tab", 'T', "A Tab", new TabPanel()));
-        menuBar.add(getJMenu("Another Tab", 'A', "Another Tab", new Tab2Panel()));
+        menuBar.add(getJMenu("Cat Facts", 'C', "Meow", new CatPanel()));
+        menuBar.add(getJMenu("Another Tab", 'T', "Another Tab", new Tab2Panel()));
     }
 
     private JButton getJMenu(String title, char mnemonic, String toolTip, UiJPanel panel) {
