@@ -7,10 +7,10 @@ package ui.panel;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import ui.rest.RestActions;
@@ -26,19 +26,21 @@ public class CatPanel extends UiJPanel {
 
     private void init() {
 
-        GridBagConstraints s1Label = new GridBagConstraints();
-        GridBagConstraints s1Constraints = new GridBagConstraints();
-        s1Constraints.gridy = 1;
-        s1Constraints.fill = GridBagConstraints.BOTH;
-        s1Constraints.insets = new Insets(0, 0, 15, 15); // T,L,B,R
+        GridBagConstraints catLabel = new GridBagConstraints();
+        GridBagConstraints catConstraints = new GridBagConstraints();
+        catConstraints.gridy = 1;
+        catConstraints.weightx = 1d;
+        catConstraints.weighty = 1d;
+        catConstraints.fill = GridBagConstraints.BOTH;
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
 
-        JTextArea s1Area = new JTextArea(0, 0);
-        s1Area.setText(RestActions.testAPI());
-        panel.add(new JLabel("Cat Fact"), s1Label);
-        panel.add(s1Area, s1Constraints);
+        JTextArea catArea = new JTextArea(0, 0);
+        JScrollPane catScrollPane = new JScrollPane(catArea);
+        catArea.setText(RestActions.getCatFact());
+        panel.add(new JLabel("Cat Fact"), catLabel);
+        panel.add(catScrollPane, catConstraints);
 
         add(panel, BorderLayout.CENTER);
     }

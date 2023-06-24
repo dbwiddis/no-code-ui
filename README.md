@@ -7,4 +7,8 @@ Execute the `main()` method in `UI.java` class.
 
 Use `./mvnw spotless:apply` to format your code.
 
-![UI Sample](https://github.com/dbwiddis/no-code-ui/assets/9291703/7380ea31-068f-47fa-b9b2-0f8b140ac6dc)
+![Splash Page](https://github.com/dbwiddis/no-code-ui/assets/9291703/217cfd4f-23ba-42ed-802f-749bc2d94e50)
+
+![Cat Fact Page](https://github.com/dbwiddis/no-code-ui/assets/9291703/d0da8d48-3fef-4c54-b251-3cff0337d90d)
+
+![Random Activity Page](https://github.com/dbwiddis/no-code-ui/assets/9291703/4d76b601-9e0e-4317-b911-16eb556ec428)

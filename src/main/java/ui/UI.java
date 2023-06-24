@@ -18,7 +18,7 @@ import javax.swing.WindowConstants;
 import ui.config.Config;
 import ui.panel.CatPanel;
 import ui.panel.SplashPanel;
-import ui.panel.Tab2Panel;
+import ui.panel.ActivityPanel;
 import ui.panel.UiJPanel;
 
 /**
@@ -57,7 +57,7 @@ public class UI {
         menuBar.add(jMenu);
         // Add later menu items
         menuBar.add(getJMenu("Cat Facts", 'C', "Meow", new CatPanel()));
-        menuBar.add(getJMenu("Another Tab", 'T', "Another Tab", new Tab2Panel()));
+        menuBar.add(getJMenu("Random Activities", 'R', "Random Activities", new ActivityPanel()));
     }
 
     private JButton getJMenu(String title, char mnemonic, String toolTip, UiJPanel panel) {
