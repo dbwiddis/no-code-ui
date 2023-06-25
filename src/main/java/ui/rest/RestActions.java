@@ -44,14 +44,10 @@ public class RestActions {
         }
     }
 
-    public static String getBoredActivity() {
-        return getBoredActivity(null);
-    }
-
     public static String getBoredActivity(String type) {
         try (RestClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("boredapi.com", 80, "http")))
                 .getLowLevelClient()) {
-            Request request = new Request("GET", "/api/activity" + (type == null ? "" : ("?type=" + type)));
+            Request request = new Request("GET", "/api/activity" + ("random".equals(type) ? "" : ("?type=" + type)));
             // request.setJsonEntity("{}");
             Response response = client.performRequest(request);
 

@@ -9,6 +9,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,6 +21,9 @@ public class ActivityPanel extends UiJPanel {
 
     private static final long serialVersionUID = 1L;
     private static final JPanel panel = new JPanel();
+
+    private static final String[] TYPES = { "random", "education", "recreational", "social", "diy", "charity",
+            "cooking", "relaxation", "music", "busywork" };
 
     public ActivityPanel() {
         super();
@@ -37,17 +41,19 @@ public class ActivityPanel extends UiJPanel {
         JButton refresh = new JButton("Click for another pair of random activities!");
         panel.add(refresh, refreshConstraints);
 
+        JComboBox<String> typeChoice = new JComboBox<String>(TYPES);
+        panel.add(typeChoice, refreshConstraints);
+
         JLabel activityLabel = new JLabel("Random Activity");
         GridBagConstraints activityConstraints = new GridBagConstraints();
         activityConstraints.gridy = 2;
-        activityConstraints.weightx = 1d;
-        activityConstraints.weighty = 1d;
+        activityConstraints.gridwidth = 2;
         activityConstraints.fill = GridBagConstraints.BOTH;
 
         JTextArea activityArea = new JTextArea(0, 0);
         JScrollPane activityScrollPane = new JScrollPane(activityArea);
 
-        String activity = RestActions.getBoredActivity();
+        String activity = RestActions.getBoredActivity(typeChoice.getSelectedItem().toString());
         activityArea.setText(activity);
         panel.add(activityLabel, activityConstraints);
         activityConstraints.gridy = 3;
@@ -61,6 +67,7 @@ public class ActivityPanel extends UiJPanel {
         typeArea.setText(RestActions.getBoredActivity(type));
         GridBagConstraints typeConstraints = new GridBagConstraints();
         typeConstraints.gridy = 4;
+        typeConstraints.gridwidth = 2;
         typeConstraints.weightx = 1d;
         typeConstraints.weighty = 1d;
         typeConstraints.fill = GridBagConstraints.BOTH;
@@ -74,7 +81,7 @@ public class ActivityPanel extends UiJPanel {
             refreshText(typeLabel, "Random Activity of the Same Type");
             refreshText(typeArea, "");
 
-            String newActivity = RestActions.getBoredActivity();
+            String newActivity = RestActions.getBoredActivity(typeChoice.getSelectedItem().toString());
             refreshText(activityArea, newActivity);
 
             String newType = parseType(newActivity);
